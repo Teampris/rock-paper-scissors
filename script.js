@@ -3,14 +3,22 @@ function getComputerChoice() {
     let choice;
     switch (random) {
         case 1:
-            choice = 'Rock';
+            choice = 'rock';
             break;
         case 2:
-            choice = 'Paper';
+            choice = 'paper';
             break;
         case 3:
-            choice = 'Scissors';
+            choice = 'scissors';
             break;
     }
     return choice;
+}
+
+function getPlayerChoice() {
+    return prompt('paper, rock or scissors?').toLowerCase();
+}
+
+function playRound(playerSelection, computerSelection) {
+
 }
