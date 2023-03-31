@@ -2,7 +2,7 @@ let playerPoint = 0;
 let computerPoint = 0;
 
 function getComputerChoice() {
-    let random = Math.floor(Math.random() * 3) + 1;
+    const random = Math.floor(Math.random() * 3) + 1;
     let choice;
     switch (random) {
         case 1:
@@ -46,6 +46,28 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    for(let i = 0; i < 5; i++){
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+
+        console.log("Round " + i + " : " + playRound(playerSelection, computerSelection) 
+        + ". You: " + playerPoint 
+        + " Computer: " + computerPoint);
+    }
+
+    console.log(result());
+    
+
+}
+function result(){
+    if(playerPoint>computerPoint){
+        return "You win";
+    } else if (playerPoint==computerPoint){
+        return "Tie";
+    } else {
+        return "You lose";
+    }
+}
+game();
+ 
