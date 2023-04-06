@@ -1,6 +1,6 @@
 let playerPoint = 0;
 let computerPoint = 0;
-
+let roundCount = 0;
 function getComputerChoice() {
     const random = Math.floor(Math.random() * 3) + 1;
     let choice;
@@ -23,7 +23,8 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    console.log('playFunction round called');
+
+
     if (playerSelection == 'rock' && computerSelection == 'paper') {
         computerPoint++;
         return 'You lose! Paper beats rock';        
@@ -40,11 +41,13 @@ function playRound(playerSelection, computerSelection) {
         playerPoint++;
         return 'You win! scissors beats paper';        
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        playerPoint++;
+        computerPoint++;
         return 'You lose! scissors beats rock';        
     } else {
         return 'Tie!';
     }
+
+    
 }
 
 function game(){
@@ -75,8 +78,13 @@ const buttons = document.querySelectorAll('button');
 function handleButtonClick(event) {
     const playerChoice = event.target.id;
     console.log(playRound(playerChoice, getComputerChoice()));
+    document.getElementById('round-count').innerText = 
+    `Round: ${++roundCount}
+     You:${playerPoint} Computer:${computerPoint}`;
+
 }
 
 buttons.forEach((button) => {
     button.addEventListener('click', handleButtonClick)
 });
+
