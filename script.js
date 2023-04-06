@@ -23,6 +23,7 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    console.log('playFunction round called');
     if (playerSelection == 'rock' && computerSelection == 'paper') {
         computerPoint++;
         return 'You lose! Paper beats rock';        
@@ -57,9 +58,8 @@ function game(){
     }
 
     console.log(result());
-    
-
 }
+
 function result(){
     if(playerPoint>computerPoint){
         return "You win";
@@ -69,5 +69,14 @@ function result(){
         return "You lose";
     }
 }
-game();
- 
+
+const buttons = document.querySelectorAll('button');
+
+function handleButtonClick(event) {
+    const playerChoice = event.target.id;
+    console.log(playRound(playerChoice, getComputerChoice()));
+}
+
+buttons.forEach((button) => {
+    button.addEventListener('click', handleButtonClick)
+});
