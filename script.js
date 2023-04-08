@@ -1,7 +1,6 @@
 let playerPoint = 0;
 let computerPoint = 0;
 let roundCount = 0;
-let game = 1;
 
 function getComputerChoice() {
     const random = Math.floor(Math.random() * 3) + 1;
@@ -49,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(){
-    for(let i = 0; i < 5; i++){
+    while(playerPoint < 5 || computerPoint < 5){
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
 
@@ -62,7 +61,14 @@ function game(){
 }
 
 function endGame(){
-    game = 0;
+    function activateButtons() {
+        buttons.forEach((button) => {
+          button.removeEventListener('click', handleButtonClick);
+        });
+        document.querySelector('#play-again-btn').addEventListener('click', handlePlayAgainButtonClick);
+    }
+    activateButtons();
+    
     if(playerPoint>computerPoint){
         return "You win";
     } else if (playerPoint==computerPoint){
@@ -72,20 +78,22 @@ function endGame(){
     }
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('#buttons > button');
 
 function handleButtonClick(event) {
     const playerChoice = event.target.id;
-    console.log(playRound(playerChoice, getComputerChoice()));
-    document.getElementById('round-count').innerText = 
-    `Round: ${++roundCount}
-     You:${playerPoint} Computer:${computerPoint}`;
+    let resultWindow = document.getElementById('result-container');
+    resultWindow.innerText = playRound(playerChoice, getComputerChoice());
 
-     if(playerPoint === 5 || computerPoint === 5) {
+    document.getElementById('round-count').innerText = `Round: ${++roundCount}`;
+    document.getElementsByClassName('player-scores-container')[0].innerText = playerPoint;
+    document.getElementsByClassName('computer-scores-container')[0].innerText = computerPoint;
+
+    if(playerPoint === 5 || computerPoint === 5) {
         let result = endGame();
         document.getElementById('round-count').innerText += `
         ${result}`;
-     }
+    }
 }
 
 buttons.forEach((button) => {

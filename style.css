@@ -3,11 +3,75 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 100px;
+    margin-top: 80px;
+    background-color: #111;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 52px;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 #container {
     width: 50%;
     border: 3px solid green;
     padding: 10px;
     text-align: center;
+    background: #4D4730;
+    border: 2px solid #4D4730;
+    box-shadow: 0 0 10px #4D4730, 0 0 20px #4D4730, 0 0 30px #4D4730;
+}
+
+
+#scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap:wrap;
+    margin-bottom: 10px;
+}
+#scores > div {
+    width: 130px;
+}
+
+button {
+    font-size: 20px;
+    padding: 5px;
+    background-color: #90EE90;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+#buttons > button {
+    width: 100px;
+}
+button::selection{
+    font-size:110px;
+}
+
+.player-scores-container,
+.computer-scores-container {
+    border: black 2px solid;
+}
+
+#result-container {
+    border: black 2px solid;
+    padding: 15px;
+}
+
+#result {
+    margin-bottom: 10px;
 }
