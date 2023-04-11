@@ -19,10 +19,6 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    return prompt('paper, rock or scissors?').toLowerCase();
-}
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'rock' && computerSelection == 'paper') {
         computerPoint++;
@@ -45,19 +41,6 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return 'Tie!';
     }   
-}
-
-function game(){
-    while(playerPoint < 5 || computerPoint < 5){
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-
-        console.log("Round " + i + " : " + playRound(playerSelection, computerSelection) 
-        + ". You: " + playerPoint 
-        + " Computer: " + computerPoint);
-    }
-
-    console.log(result());
 }
 
 function endGame(){
