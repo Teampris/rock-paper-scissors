@@ -1,6 +1,7 @@
 let playerPoint = 0;
 let computerPoint = 0;
 let roundCount = 0;
+const container = document.getElementById("container");
 
 function getComputerChoice() {
     const random = Math.floor(Math.random() * 3) + 1;
@@ -48,7 +49,13 @@ function endGame(){
         buttons.forEach((button) => {
           button.removeEventListener('click', handleButtonClick);
         });
-        document.querySelector('#play-again-btn').addEventListener('click', handlePlayAgainButtonClick);
+        const playAgainButton = document.createElement('button');
+        playAgainButton.textContent = 'Play Again!';
+        playAgainButton.id = "play-again-btn";
+
+        container.appendChild(playAgainButton);
+
+        playAgainButton.addEventListener('click', handlePlayAgainButtonClick);
     }
     activateButtons();
     
@@ -74,9 +81,22 @@ function handleButtonClick(event) {
 
     if(playerPoint === 5 || computerPoint === 5) {
         let result = endGame();
-        document.getElementById('round-count').innerText += `
-        ${result}`;
+        document.getElementById('result-container').innerText = `${result}`;
     }
+}
+
+function handlePlayAgainButtonClick(event) {
+    const playAgainButton = document.getElementById('play-again-btn');
+    playAgainButton.remove();
+    buttons.forEach((button) => {
+        button.addEventListener('click', handleButtonClick)
+    });
+    playerPoint = 0;
+    computerPoint = 0;
+    roundCount = 0;    
+    document.getElementById('round-count').innerText = `Round: ${roundCount}`;
+    document.getElementsByClassName('player-scores-container')[0].innerText = playerPoint;
+    document.getElementsByClassName('computer-scores-container')[0].innerText = computerPoint;
 }
 
 buttons.forEach((button) => {
