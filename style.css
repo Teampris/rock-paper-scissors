@@ -4,8 +4,9 @@ body {
     justify-content: center;
     align-items: flex-start;
     margin-top: 80px;
-    background-color: #111;
+    background-color: #292826;
     font-family: Arial, sans-serif;
+    color: #F9D142;
 }
 
 h1 {
@@ -18,9 +19,9 @@ h1 {
     border: 3px solid green;
     padding: 10px;
     text-align: center;
-    background: #4D4730;
+    background: #292826;
     border: 2px solid #4D4730;
-    box-shadow: 0 0 10px #4D4730, 0 0 20px #4D4730, 0 0 30px #4D4730;
+    box-shadow: 0 0 10px #F9D142, 0 0 20px #F9D142, 0 0 30px #F9D142;
 }
 
 
@@ -39,8 +40,8 @@ h1 {
 button {
     font-size: 20px;
     padding: 5px;
-    background-color: #90EE90;
-    color: #333;
+    background-color: #F9D142;
+    color: #292826;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -64,14 +65,12 @@ button::selection{
 
 .player-scores-container,
 .computer-scores-container {
-    border: black 2px solid;
+    border: #F9D142 2px solid;
+    padding: 5px;
 }
 
 #result-container {
-    border: black 2px solid;
+    border: #F9D142 2px solid;
     padding: 15px;
-}
-
-#result {
-    margin-bottom: 10px;
+    margin: 10px 20px;
 }
